@@ -73,13 +73,19 @@ public class ch19_modifyOk extends HttpServlet {
 		if(pwConfirm()) {
 			System.out.println("OK");
 			
-			String query = "update member set name ='"+name+"', phone1 ='"+phone1+"', phone2 ='"+phone2+"', phone3 ='"+phone3+"', gender ='"+gender+"'";
-			// String query = "update member set name ='"+name+"', phone1 ='"+phone1+"', phone2 ='"+phone2+"', phone ='"+phone3+"', gender ='"+gender+"'";
+			// String query = "update member set name ='"+name+"', phone1 ='"+phone1+"', phone2 ='"+phone2+"', phone3 ='"+phone3+"', gender ='"+gender+"'";
+			String query = "update member set name ='"+name+"', phone1 ='"+phone1+"', phone2 ='"+phone2+"', phone3 ='"+phone3+"', gender ='"+gender+"' where id = '"+id+"'";
 			try {
 				Class.forName("oracle.jdbc.driver.OracleDriver"); // 드라이버 로드
 				connection= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:ORCL", "c##scott", "tiger");
 				statement= connection.createStatement();
+				
+				
+				
+				
+				
 				int i= statement.executeUpdate(query); // 현재 업데이트가 계속해서 실패하고 있음
+				System.out.println("i:" +i);
 				if(i==1) {
 					System.out.println("update success");
 					httpSession.setAttribute("name", name);
