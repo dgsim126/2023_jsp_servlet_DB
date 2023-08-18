@@ -33,7 +33,7 @@ public class MemberDAO {
 		
 		try {
 			connection= DriverManager.getConnection(url, uid, upw); // 데이터베이스 연결 생성
-			statement= connection.createStatement(); // 
+			statement= connection.createStatement(); // SQL문 실행을 위해 Statement객체를 이용
 			resultSet= statement.executeQuery("select * from member"); // member테이블에서 모든 열을 선택
 			
 			while(resultSet.next()) { // member테이블을 한 열씩 읽기
